@@ -1,3 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<form action="@Url.Action("Login", "Account")" method="get">
+
+    <button type="submit">Login using Google</button>
+
+    <h3>@ViewData["Message"]</h3>
+</form>

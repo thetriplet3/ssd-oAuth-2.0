@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="row">
+                <div class="col-md-2">
+                    <img src="@User.FindFirst("image").Value.Split("?")[0]" alt="" class="img-thumbnail" />
+                </div>
+                <div class="col-md-10">
+                    <h4>@User.Identity.Name</h4>
+                    <p><i class="fa fa-google"></i><a href="@User.FindFirst("urn:google:profile").Value">Google Plus</a></p>
+                </div>
+            </div>
+
+        <h3>Claims associated with current User</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Claim
+                    </th>
+                    <th>
+                        Value
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var claim in User.Claims)
+                {
+                    <tr>
+                        <td>@claim.Type</td>
+                        <td>@claim.Value</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
